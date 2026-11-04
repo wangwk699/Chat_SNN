@@ -1,0 +1,35 @@
+Chat_SNN source notice
+
+This inference-only extraction is derived from a local working copy of
+PhaseSNN (upstream: https://github.com/JLU-Solar/PhaseSNN).
+The upstream repository declares Apache License 2.0; its LICENSE is retained.
+The local source contains uncommitted modifications and additional files;
+upstream HEAD 92a0a0c0e6b1751ca2f9aea175e35d368c77488e is provenance only,
+not a claim that all extracted code is identical to that upstream commit.
+
+Hadamard helpers originate from QuaRot (https://github.com/spcl/QuaRot)
+and were adapted from QuIP# (https://github.com/Cornell-RelaxML/quip-sharp),
+as acknowledged in the original helper source. These attributions are retained.
+The CUDA fast-hadamard-transform project is an external dependency with its
+own license; its source is not redistributed in this repository.
+
+Changes in this extraction:
+- Keep the T=16 saved-model multi-turn inference path and Qwen Phase operators.
+- Remove training, calibration, evaluation, search, Llama, and unused imports.
+- Preserve runtime layer paths, FSNeuron calculations, and checkpoint keys.
+- Require an explicit local --model-path and use the active Python environment.
+- Rebuild neurons from the checkpoint; omit the external retrain.pth path.
+- Keep only the 140-order Hadamard matrix needed by this 1.5B checkpoint.
+- Validate neuron keys before accepting a saved model; do not rotate it again.
+
+SHA-256 of local source files used for this extraction:
+649aa01094c4de29b94f870e6a70ce5aa0ebde69389808abd71e7142ab3f2718  chat_snn_t16.py
+3404688896538179961f4010c3f54181d99bfb91b27ca895dd0dc38cf697de31  run_chat_snn_t16.sh
+12a6658f66ec20e9cbedb7d890173afec6db6ff536370102348848a8b0853154  phase/phase_layer.py
+93e9b2d8c9af3e6ac27f0ea4813b7528571e58138e439134c4a8c8e75736e913  phase/phase_neuron.py
+688a2a78334a4e7fb66a4e4c6d24a929d051111fe4c3575e3c9bc531c727f866  phase/phase_util.py
+f7954bbd08fb981e5f1bbaa9e24da850aa90e8d1c410a3e98c7237e151128781  SNN/spike_layer.py
+1eba5e91502acd0c83670dc53971c07f398fe02ba5e879d7b3511c5f4cc04615  utils/hadamard_utils.py
+4ef92160d7ac8a60189d0419bad77b2b997085786221932030f0e51b3d0df945  utils/model_utils.py
+2dce3132cdbf9748a6fed24472b2125bbf03e1a41f054729ca926fe4eaf4f5eb  utils/snn_utils.py
+946426558478adcab89e87caa19b41a3379c815a1a9961a1ae2605f9be267ee8  utils/train_utils.py

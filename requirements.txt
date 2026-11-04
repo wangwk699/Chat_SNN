@@ -1,0 +1,9 @@
+# Install the CUDA 12.4 PyTorch wheels first, following README.md.
+torch==2.4.1
+transformers==4.40.1
+accelerate==0.28.0
+numpy==1.23.4
+tokenizers==0.19.1
+safetensors==0.5.3
+# Installed from the pinned source revision in README.md.
+fast-hadamard-transform==1.1.0
